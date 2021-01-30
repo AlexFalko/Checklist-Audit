@@ -1,6 +1,8 @@
 class ChecklistsController < ApplicationController
+
   before_action :authenticate_user!
+  
   def index
-    @checklists = Checklist.all
+    @pagy, @checklists = pagy(Checklist.all, items: 10)
   end
 end
