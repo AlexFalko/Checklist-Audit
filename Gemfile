@@ -11,6 +11,8 @@ gem 'devise'
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 gem 'pagy'
+gem 'pundit'
+gem 'pry'
 gem 'haml'
 gem "haml-rails"
 gem 'bootstrap-material-design-rails'
