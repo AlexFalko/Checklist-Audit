@@ -12,6 +12,8 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 gem 'pagy'
 gem 'haml'
+gem "haml-rails"
+gem 'bootstrap-material-design-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
