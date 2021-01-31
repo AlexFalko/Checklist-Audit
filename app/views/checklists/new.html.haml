@@ -1,0 +1,18 @@
+%h1 New Checklist
+= form_with model: @checklist, local: true do |form|
+  %div
+    = form.label :title
+    %br/
+    = form.text_field :title
+    - @checklist.errors.full_messages_for(:title).each do |message|
+      %div= message
+  %div
+    = form.label :description
+    %br/
+    = form.text_area :description
+    %br/
+    - @checklist.errors.full_messages_for(:description).each do |message|
+      %div= message
+  %div
+    = form.submit
+    = link_to 'Cancel', checklists_path
