@@ -6,6 +6,11 @@ class ChecklistsController < ApplicationController
     @pagy, @checklists = pagy(policy_scope(Checklist), items: 10)
   end
 
+  def show
+    @checklist = Checklist.find(params[:id])
+  end
+
+
   def new
     @checklist = Checklist.new
   end

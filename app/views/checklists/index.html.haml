@@ -1,7 +1,7 @@
 = link_to "New Checklist", new_checklist_path
 - @checklists.each do |cl|
   %br
-    = cl.title
+    = link_to cl.title, cl
     = cl.description
     = link_to 'Destroy', checklist_path(cl), method: :delete, data: { confirm: 'Вы уверены?' }
     
