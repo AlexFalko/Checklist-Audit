@@ -13,4 +13,20 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+ @import 'bootstrap';
+
+ 
+
+
+ .wc{
+  width: 30% !important
+}
+
+body{
+  background: linear-gradient(to top, #c77b0c, #d9d5c1);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  
+ }

@@ -1,0 +1,6 @@
+- @checklists.each do |cl|
+  %br
+    = cl.title
+    = cl.description
+   
+= pagy_bootstrap_nav(@pagy).html_safe
