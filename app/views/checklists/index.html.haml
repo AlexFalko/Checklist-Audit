@@ -2,5 +2,7 @@
   %br
     = cl.title
     = cl.description
-   
-= pagy_bootstrap_nav(@pagy).html_safe
+
+-if @checklists.length >= 10
+  = pagy_bootstrap_nav(@pagy).html_safe
+
