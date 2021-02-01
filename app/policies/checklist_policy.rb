@@ -5,8 +5,12 @@ class ChecklistPolicy < ApplicationPolicy
     return true if @user.present?
   end
 
+  def show?
+    return true if @user.present?
+  end
+
   def create?
-    user.present?
+    return true if @user.present?
   end
 
   def update?
@@ -14,7 +18,7 @@ class ChecklistPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # return true if user.present? && user == article.user
+    return true if @user.present?
   end
 
   class Scope < Scope

@@ -8,14 +8,17 @@ class ChecklistsController < ApplicationController
 
   def show
     @checklist = Checklist.find(params[:id])
+    authorize Checklist
   end
 
 
   def new
+    authorize Checklist
     @checklist = Checklist.new
   end
 
   def create
+    authorize Checklist
     @checklist = Checklist.new(checklist_params)
     @checklist.user_id = current_user.id
     if @checklist.save
@@ -26,6 +29,7 @@ class ChecklistsController < ApplicationController
   end
 
   def destroy
+    authorize Checklist
     @checklist = Checklist.find(params[:id])
     @checklist.destroy
 
