@@ -19,8 +19,7 @@ class ChecklistsController < ApplicationController
 
   def create
     authorize Checklist
-    @checklist = Checklist.new(checklist_params)
-    @checklist.user_id = current_user.id
+    @checklist = current_user.checklists.new(checklist_params)
     if @checklist.save
       redirect_to checklists_path, flash: { notice: "Checklist create!" }
     else
@@ -31,9 +30,11 @@ class ChecklistsController < ApplicationController
   def destroy
     authorize Checklist
     @checklist = Checklist.find(params[:id])
-    @checklist.destroy
-
-    redirect_to checklists_path, flash: { notice: "Checklist deleted!" }
+    if @checklist.destroy
+      redirect_to checklists_path, flash: { notice: "Checklist deleted!" }
+    else
+      redirect_to checklists_path, flash: { notice: "Checklist not deleted!" }
+    end 
   end
 
 
