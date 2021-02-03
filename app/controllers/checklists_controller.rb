@@ -4,9 +4,11 @@ class ChecklistsController < ApplicationController
   def index
     authorize Checklist
     @pagy, @checklists = pagy(policy_scope(Checklist), items: 10)
+   
   end
 
   def show
+    
     @checklist = Checklist.find(params[:id])
     authorize Checklist
   end
@@ -15,9 +17,11 @@ class ChecklistsController < ApplicationController
   def new
     authorize Checklist
     @checklist = Checklist.new
+    2.times { @checklist.questions.build }
   end
 
   def create
+    
     authorize Checklist
     @checklist = current_user.checklists.new(checklist_params)
     if @checklist.save
@@ -41,7 +45,7 @@ class ChecklistsController < ApplicationController
   private
 
     def checklist_params
-      params.require(:checklist).permit(:title, :description, :user_id)
+      params.require(:checklist).permit(:title, :description, :user_id, questions_attributes: [:id, :title, :description])
     end
 
 end
