@@ -27,10 +27,10 @@
         .col-3.text-left
           = audit.checklist.updated_at
         .col-4.text-center
-          = link_to 'Destroy', audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: 'Are you sure?' }
-          = link_to "Edit", audits_path, class:'btn btn-warning'
+          = link_to t('.destroy'), audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
+          = link_to t('.edit'), audits_path, class:'btn btn-warning'
         
-= link_to 'Back', checklists_path, class: "btn btn-dark mt-2"  
+= link_to t('.back'), checklists_path, class: "btn btn-dark mt-2"  
 .row
   .col.d-flex.justify-content-center.mt-3
     -if @audits.length >= Checklist::COUNT_ITEM_PAGY

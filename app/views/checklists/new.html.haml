@@ -15,7 +15,7 @@
       %div= message
   %div
   Questions:
-  %input{onclick: "generate_question()" ,type: "button", value: "Add question +"}
+  %input{onclick: "generate_question()" ,type: "button", value: t('.add')}
   %ul
     = form.fields_for :questions do |questions_form|
       %li
@@ -24,6 +24,6 @@
         = questions_form.label :description
         = questions_form.text_field :description
   = form.submit
-  = link_to 'Cancel', checklists_path, class: 'btn btn-danger'
+  = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'
 
 
