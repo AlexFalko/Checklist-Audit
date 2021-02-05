@@ -1,0 +1,40 @@
+
+.m-3.d-flex.justify-content-center
+  %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", type: "button"} Select checklist
+    
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Select checklist
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %select.form-control
+          - @pp.each do |audit|
+            %option= audit.checklist.title
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
+        %button.btn.btn-primary{type: "button"} Send
+
+%ul.list-group      
+  .container
+  - @audits.each do |audit|
+    %li.list-group-item
+      .row.align-items-center
+        .col-5.text-left
+          = audit.checklist.title
+        .col-3.text-left
+          = audit.checklist.updated_at
+        .col-4.text-center
+          = link_to 'Destroy', audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: 'Are you sure?' }
+          = link_to "Edit", audits_path, class:'btn btn-warning'
+        
+= link_to 'Back', checklists_path, class: "btn btn-dark mt-2"  
+.row
+  .col.d-flex.justify-content-center.mt-3
+    -if @audits.length >= Checklist::COUNT_ITEM_PAGY
+      = pagy_bootstrap_nav(@pagy).html_safe
+      
+
+

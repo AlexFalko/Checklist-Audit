@@ -12,9 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-material-design-rails
+
  */
- @import 'bootstrap';
+
 
  
 
@@ -24,10 +24,23 @@
 }
 
 body{
-  background: linear-gradient(to top, #c77b0c, #d9d5c1);
+  background: linear-gradient(to top, #258a4b, #e3ebe3);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   
  }
+
+ .custom-class{
+  font-weight: 800;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: .5em 1em ;
+  border-radius: 5px;
+  border-color:rgb(64,199,129);
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+}

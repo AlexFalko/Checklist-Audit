@@ -3,14 +3,13 @@ class ChecklistsController < ApplicationController
 
   def index
     authorize Checklist
-    @pagy, @checklists = pagy(policy_scope(Checklist), items: 10)
+    @pagy, @checklists = pagy(policy_scope(Checklist), items: Checklist::COUNT_ITEM_PAGY)
    
   end
 
   def show
-    
-    @checklist = Checklist.find(params[:id])
     authorize Checklist
+    @checklist = Checklist.find(params[:id])
   end
 
 
@@ -21,7 +20,6 @@ class ChecklistsController < ApplicationController
   end
 
   def create
-    
     authorize Checklist
     @checklist = current_user.checklists.new(checklist_params)
     if @checklist.save
@@ -33,8 +31,8 @@ class ChecklistsController < ApplicationController
 
   def destroy
     authorize Checklist
-    @checklist = Checklist.find(params[:id])
-    if @checklist.destroy
+    checklist = Checklist.find(params[:id])
+    if checklist.destroy
       redirect_to checklists_path, flash: { notice: "Checklist deleted!" }
     else
       redirect_to checklists_path, flash: { notice: "Checklist not deleted!" }

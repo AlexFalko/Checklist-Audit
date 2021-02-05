@@ -7,7 +7,7 @@
     - @checklist.errors.full_messages_for(:title).each do |message|
       %div= message
   %div
-    = form.label :description
+    =  form.label :description
     %br/
     = form.text_area :description
     %br/
@@ -15,14 +15,15 @@
       %div= message
   %div
   Questions:
+  %input{onclick: "generate_question()" ,type: "button", value: "Add question +"}
   %ul
     = form.fields_for :questions do |questions_form|
       %li
         = questions_form.label :title
-        = questions_form.text_field :title
+        = questions_form.text_field :title 
         = questions_form.label :description
         = questions_form.text_field :description
   = form.submit
-  = link_to 'Cancel', checklists_path
+  = link_to 'Cancel', checklists_path, class: 'btn btn-danger'
 
 
