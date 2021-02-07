@@ -1,4 +1,3 @@
-
 .m-3.d-flex.justify-content-center
   %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", type: "button"} Select checklist
     
@@ -10,13 +9,14 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
           %span{"aria-hidden" => "true"} ×
       .modal-body
-        %select.form-control
-          - @pp.each do |audit|
-            %option= audit.checklist.title
-      .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
-        %button.btn.btn-primary{type: "button"} Send
-
+        = form_for(Audit.new, url: new_audit_path, method: :get) do |form|
+          = form.collection_select :checklist_id, Checklist.order(:title), :id, :title
+          = form.submit
+        
+      -# .modal-footer
+      -#   %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
+      -#   %button.btn.btn-primary{type: "button"} Send
+        
 %ul.list-group      
   .container
   - @audits.each do |audit|
@@ -24,12 +24,13 @@
       .row.align-items-center
         .col-5.text-left
           = audit.checklist.title
-        .col-3.text-left
+        .col-4.text-left
           = audit.checklist.updated_at
-        .col-4.text-center
-          = link_to t('.destroy'), audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
-          = link_to t('.edit'), audits_path, class:'btn btn-warning'
-        
+        .col-3.text-right
+          -# = link_to t('.destroy'), checklist_audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
+          -# = link_to t('.edit'), edit_checklist_audit_path, class:'btn btn-warning'
+
+
 = link_to t('.back'), checklists_path, class: "btn btn-dark mt-2"  
 .row
   .col.d-flex.justify-content-center.mt-3

@@ -2,22 +2,31 @@ class AuditsController < ApplicationController
   before_action :authenticate_user!
   def index
     authorize Audit
-    @pp=Audit.all
     @pagy, @audits = pagy(policy_scope(Audit), items: Checklist::COUNT_ITEM_PAGY)
    
   end
 
+  def edit
+    @audit = Audit.find(params[:id])
+  end
+
 
   def new
-    @audit = Audit.new
+    authorize Audit
+    @checklist = Checklist.find(params[:audit][:checklist_id])
+    @audit = @checklist.audits.build
   end
 
 
   def create
     authorize Audit
-    @audit = current_user.audit.new(audit_params)
+   
+    # @checklist = Checklist.find(params[:checklist_id])
+    @audit = current_user.audits.new(audit_params)
+    # @audit = @checklist.audits.create(audit_params)
+    # @audit = Audit.new(audit_params)
     if @audit.save
-      redirect_to audits_path, flash: { notice: "Audit create!" }
+      redirect_to audits_path, flash: { notice: t('.audit_create') }
     else
       render 'new'
     end
@@ -28,9 +37,9 @@ class AuditsController < ApplicationController
     authorize Audit
     @audit = Audit.find(params[:id])
     if @audit.destroy
-      redirect_to audits_path, flash: { notice: "Audit deleted!" }
+      redirect_to audits_path, flash: { notice: t('.audit_deleted') }
     else
-      redirect_to audits_path, flash: { notice: "Audit not deleted!" }
+      render action: 'audit#index', flash: { alert: t('.audit_not_deleted') }
     end 
   end   
 
@@ -38,7 +47,7 @@ class AuditsController < ApplicationController
 private
 
   def audit_params
-    params.require(:audit).permit(:user_id, :checklist_id)
+    params.require(:audit).permit(:checklist_id)
   end
 
 

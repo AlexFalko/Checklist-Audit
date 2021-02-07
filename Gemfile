@@ -14,7 +14,6 @@ gem 'haml'
 gem "haml-rails"
 gem 'simple_form'
 gem 'ffaker'
-gem 'i18n'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

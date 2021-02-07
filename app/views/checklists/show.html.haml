@@ -1,5 +1,14 @@
-= @checklist.title
-= @checklist.description
-
+Questions
+%ul.list-group
+- @checklist.questions.each do |cc|
+  %li.list-group-item
+    .row.align-items-center
+      .col.text-center
+        = "title"
+        = cc.title
+      .col.text-center
+        = "description"
+        = cc.description
+= link_to t('.back'), checklists_path, class: 'btn btn-danger'        
 
 

@@ -2,12 +2,11 @@ Rails.application.routes.draw do
   
   devise_for :users
   root "checklists#index"
-  resources :audits, only: [:index, :new, :create, :destroy]
+  # get '/checklists/:id', to: 'checklist#show'
+  resources :audits
+  resources :checklists 
+    
 
-  resources :checklists do
-    resources :questions
-  end
 
-  
   
 end
