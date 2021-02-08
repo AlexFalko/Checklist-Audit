@@ -27,8 +27,8 @@
         .col-4.text-left
           = audit.checklist.updated_at
         .col-3.text-right
-          -# = link_to t('.destroy'), checklist_audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
-          -# = link_to t('.edit'), edit_checklist_audit_path, class:'btn btn-warning'
+          = link_to t('.destroy'), audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
+          = link_to t('.edit'), edit_audit_path(audit), class:'btn btn-warning'
 
 
 = link_to t('.back'), checklists_path, class: "btn btn-dark mt-2"  

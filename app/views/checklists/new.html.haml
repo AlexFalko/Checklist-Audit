@@ -14,8 +14,6 @@
     - @checklist.errors.full_messages_for(:description).each do |message|
       %div= message
   %div
-  Questions:
-  %input{onclick: "generate_question()" ,type: "button", value: t('.add')}
   %ul
     = form.fields_for :questions do |questions_form|
       %li
@@ -27,3 +25,5 @@
   = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'
 
 
+-# Questions:
+-#   %input{onclick: "generate_question()" ,type: "button", value: t('.add')}

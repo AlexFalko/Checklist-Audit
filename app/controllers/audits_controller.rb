@@ -14,23 +14,28 @@ class AuditsController < ApplicationController
   def new
     authorize Audit
     @checklist = Checklist.find(params[:audit][:checklist_id])
-    @audit = @checklist.audits.build
+    responses = @checklist.questions.map{ |question| Response.new(question: question) }
+    @audit = @checklist.audits.build(responses: responses)
   end
 
 
   def create
     authorize Audit
-   
-    # @checklist = Checklist.find(params[:checklist_id])
     @audit = current_user.audits.new(audit_params)
-    # @audit = @checklist.audits.create(audit_params)
-    # @audit = Audit.new(audit_params)
     if @audit.save
       redirect_to audits_path, flash: { notice: t('.audit_create') }
     else
       render 'new'
     end
+  end
 
+
+  def edit
+    @audit = Audit.find(params[:id])
+  end
+
+  def update
+    @audit = Audit.find(params[:id])
   end
 
   def destroy
@@ -47,7 +52,7 @@ class AuditsController < ApplicationController
 private
 
   def audit_params
-    params.require(:audit).permit(:checklist_id)
+    params.require(:audit).permit(:checklist_id, responses_attributes: [:answer, :question_id, :description])
   end
 
 

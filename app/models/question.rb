@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   validates :title, :description, presence: true
   validates :title, length: { in: MIN_LENGTH_TITLE..MAX_LENGTH_TITLE }
   
-  belongs_to :checklist
-  has_many :responses
+  belongs_to :checklist 
+  has_many :responses, dependent: :destroy
 
 end

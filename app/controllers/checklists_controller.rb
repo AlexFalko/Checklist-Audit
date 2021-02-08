@@ -15,14 +15,16 @@ class ChecklistsController < ApplicationController
 
 
   def new
+    # 2.times { @checklist.questions.build }  
     authorize Checklist
     @checklist = Checklist.new
-    2.times { @checklist.questions.build }  
+    question = @checklist.questions.build 
   end
 
   def create
     authorize Checklist
     @checklist = current_user.checklists.new(checklist_params)
+    
     if @checklist.save
       redirect_to checklists_path, flash: { notice: t('.checklist_create') }
     else
@@ -36,7 +38,8 @@ class ChecklistsController < ApplicationController
     if checklist.destroy
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
-      render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
+      # render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
+      redirect_to checklists_path, flash: { notice: 'Not delete' }
     end 
   end
 
