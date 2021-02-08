@@ -7,13 +7,13 @@ default: &default
 production:
   adapter: postgresql
   encoding: unicode
-  database: d7ch81lvc1rd06
+  database: da1kg83inmadiu
   pool: 5
-  username: vorincukmeaema
-  password: 890525f9148db16e2a12087d767f033c7bf2d38e59906374f9679259c3291eb7
+  username: hqakwynbsqcksd
+  password: efcbe14ea24052c0ecc227c151065d9e750bf665bd3722cd87d5608fb3123507
   timeout: 5000
   port: 5432
-  host: ec2-54-159-107-189.compute-1.amazonaws.com
+  host: ec2-52-22-161-59.compute-1.amazonaws.com
 
 development:
   <<: *default
