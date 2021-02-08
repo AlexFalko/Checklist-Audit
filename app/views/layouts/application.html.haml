@@ -14,9 +14,11 @@
 
   %body
     = render "layouts/navigation"
-    #flash
-      - flash.each do |key, value|
-        %div{class: "flash #{key}"}= value
+    .container
+      - flash.each do |name, message|
+        %div{class: "alert #{bootstrap_class_for(name)}"}
+          %button.close{"data-dismiss" => "alert"} ×
+          = message
     .container
       = yield
     

@@ -15,15 +15,15 @@
       %div= message
   %div
   %ul
+    %h3 Questions
     = form.fields_for :questions do |questions_form|
-      %li
-        = questions_form.label :title
-        = questions_form.text_field :title 
-        = questions_form.label :description
-        = questions_form.text_field :description
-  = form.submit
+      #fieldsetContainer
+        %fieldset#0
+          = questions_form.label :title
+          = questions_form.text_field :title 
+          = questions_form.label :description
+          = questions_form.text_field :description
+      
+  = form.submit :class => 'btn btn-success'
+
   = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'
-
-
--# Questions:
--#   %input{onclick: "generate_question()" ,type: "button", value: t('.add')}
