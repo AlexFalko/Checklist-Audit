@@ -6,10 +6,6 @@ class AuditsController < ApplicationController
    
   end
 
-  def edit
-    @audit = Audit.find(params[:id])
-  end
-
 
   def new
     authorize Audit
@@ -36,6 +32,11 @@ class AuditsController < ApplicationController
 
   def update
     @audit = Audit.find(params[:id])
+    if @audit.update(audit_params)
+      redirect_to audits_path, flash: { notice: "Audit edit" }
+    else
+      render action: 'audit#index', flash: { alert: "Audit not edit" }
+    end 
   end
 
   def destroy
@@ -52,7 +53,7 @@ class AuditsController < ApplicationController
 private
 
   def audit_params
-    params.require(:audit).permit(:checklist_id, responses_attributes: [:answer, :question_id, :description])
+    params.require(:audit).permit(:checklist_id, responses_attributes: [:id, :answer, :question_id, :description])
   end
 
 

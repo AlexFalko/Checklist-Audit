@@ -4,6 +4,6 @@ class Response < ApplicationRecord
   belongs_to :question
   belongs_to :audit
 
-  validates :answer, :description, presence: true
-  validates :description, length: { minimum: MIN_LENGTH_DESCRIPTION }
+  # validates :answer, :description, presence: true
+  # validates :description, length: { minimum: MIN_LENGTH_DESCRIPTION }
 end

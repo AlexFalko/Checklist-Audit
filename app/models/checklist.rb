@@ -2,8 +2,8 @@ class Checklist < ApplicationRecord
   COUNT_ITEM_PAGY = 10
   MAX_LENGTH_TITLE = 40
   
-  validates :title, :description, presence: true
-  validates :title, length: { maximum: MAX_LENGTH_TITLE }
+  # validates :title, :description, presence: true
+  # validates :title, length: { maximum: MAX_LENGTH_TITLE }
 
   belongs_to :user
   has_many :questions, dependent: :destroy

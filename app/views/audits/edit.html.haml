@@ -1,0 +1,23 @@
+-# = form_with(model: @audit, url: edit_audit_path) do |f|
+-#   = f.select :answer.map
+-#   = f.submit
+Questions
+%ul.list-group
+= form_with(model: @audit, url: audit_path, method: :patch) do |f|
+  = f.fields_for :responses do |ff|
+    %li.list-group-item
+      .row.align-items-center
+        .col.text-left
+          = "#{ff.object.question.title}: #{ff.object.question.description}"
+          = ff.select :answer, Response.answers.keys.to_a
+          = ff.text_field :description
+          = ff.hidden_field :question_id
+  = f.hidden_field(:checklist_id)
+  = f.submit
+
+= link_to t('.back'), audits_path, class: "btn btn-dark mt-2" 
+
+
+
+
+  
