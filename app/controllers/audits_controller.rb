@@ -6,14 +6,12 @@ class AuditsController < ApplicationController
    
   end
 
-
   def new
     authorize Audit
     @checklist = Checklist.find(params[:audit][:checklist_id])
     responses = @checklist.questions.map{ |question| Response.new(question: question) }
     @audit = @checklist.audits.build(responses: responses)
   end
-
 
   def create
     authorize Audit
@@ -25,12 +23,12 @@ class AuditsController < ApplicationController
     end
   end
 
-
   def edit
     @audit = Audit.find(params[:id])
   end
 
   def update
+    authorize Audit
     @audit = Audit.find(params[:id])
     if @audit.update(audit_params)
       redirect_to audits_path, flash: { notice: t('.audit_edit') }

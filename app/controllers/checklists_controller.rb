@@ -10,7 +10,6 @@ class ChecklistsController < ApplicationController
   def show
     authorize Checklist
     @checklist = Checklist.find(params[:id])
-    @questions = Question.all
   end
 
   def new  
