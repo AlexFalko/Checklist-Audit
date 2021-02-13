@@ -1,19 +1,19 @@
 class AuditPolicy < ApplicationPolicy
 
   def index?
-    return true if @user.present?
+    @user.present?
   end
 
   def create?
-    return true if @user.present?
+    @user.present?
   end
 
   def update?
-    return true if user.present? && user == article.user
+    user.present? && user == article.user
   end
 
   def destroy?
-    return true if @user.present?
+    @user.present?
   end
 
   class Scope < Scope

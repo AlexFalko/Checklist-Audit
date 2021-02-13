@@ -1,23 +1,23 @@
 en: 
   audits:
     destroy:
-      audit_deleted: 'Audit deleted!'
+      audit_deleted: 'Audit removed!'
       audit_not_deleted: 'Audit not deleted!'
     create:  
-      audit_create: 'Audit create'
+      audit_create: 'Audit created'
     index:
       destroy: 'Delete'
       confirm: 'Are you sure?'
       edit: 'Edit'
       back: 'Back'
     update:
-      audit_edit: 'Audit edit!'
-      audit_not_edit: 'Audit not edit!'
+      audit_edit: 'Audit changed!'
+      audit_not_edit: 'Audit not changed!'
   checklists:
     create:
-      checklist_create: 'Checkist create!'
+      checklist_create: 'Checkist created!'
     destroy:
-      checklist_deleted: 'Checklist deleted!'
+      checklist_deleted: 'Checklist removed!'
       checklist_not_deleted: 'Checklist not deleted!'
     index:
       new: 'New checklist'

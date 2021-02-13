@@ -33,7 +33,7 @@ class AuditsController < ApplicationController
     if @audit.update(audit_params)
       redirect_to audits_path, flash: { notice: t('.audit_edit') }
     else
-      render action: 'audit#index', flash: { alert: t('.audit_not_edit') }
+      render 'edit', flash: { alert: t('.audit_not_edit') }
     end 
   end
 
