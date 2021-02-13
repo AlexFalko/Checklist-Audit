@@ -1,7 +1,3 @@
--# = form_with(model: @audit, url: edit_audit_path) do |f|
--#   = f.select :answer.map
--#   = f.submit
-Questions
 %ul.list-group
 = form_with(model: @audit, url: audit_path, method: :patch) do |f|
   = f.fields_for :responses do |ff|

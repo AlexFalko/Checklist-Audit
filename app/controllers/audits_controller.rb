@@ -33,9 +33,9 @@ class AuditsController < ApplicationController
   def update
     @audit = Audit.find(params[:id])
     if @audit.update(audit_params)
-      redirect_to audits_path, flash: { notice: "Audit edit" }
+      redirect_to audits_path, flash: { notice: t('.audit_edit') }
     else
-      render action: 'audit#index', flash: { alert: "Audit not edit" }
+      render action: 'audit#index', flash: { alert: t('.audit_not_edit') }
     end 
   end
 

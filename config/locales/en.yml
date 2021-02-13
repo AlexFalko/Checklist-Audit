@@ -10,6 +10,9 @@ en:
       confirm: 'Are you sure?'
       edit: 'Edit'
       back: 'Back'
+    update:
+      audit_edit: 'Audit edit!'
+      audit_not_edit: 'Audit not edit!'
   checklists:
     create:
       checklist_create: 'Checkist create!'

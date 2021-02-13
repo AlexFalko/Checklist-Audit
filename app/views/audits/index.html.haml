@@ -13,10 +13,6 @@
           = form.collection_select :checklist_id, Checklist.order(:title), :id, :title
           = form.submit
         
-      -# .modal-footer
-      -#   %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
-      -#   %button.btn.btn-primary{type: "button"} Send
-        
 %ul.list-group      
   .container
   - @audits.each do |audit|
