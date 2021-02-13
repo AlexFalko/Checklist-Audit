@@ -10,12 +10,9 @@ class ChecklistsController < ApplicationController
   def show
     authorize Checklist
     @checklist = Checklist.find(params[:id])
-    @questions = Question.all
   end
 
-
-  def new
-    # 2.times { @checklist.questions.build }  
+  def new  
     authorize Checklist
     @checklist = Checklist.new
     @checklist.questions.build 
@@ -39,11 +36,9 @@ class ChecklistsController < ApplicationController
     if checklist.destroy
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
-      # render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
-      redirect_to checklists_path, flash: { notice: 'Not delete' }
+      render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
     end 
   end
-
 
   private
 

@@ -2,15 +2,15 @@ class ChecklistPolicy < ApplicationPolicy
 
   
   def index?
-    return true if @user.present?
+    @user.present?
   end
 
   def show?
-    return true if @user.present?
+    @user.present?
   end
 
   def create?
-    return true if @user.present?
+    @user.present?
   end
 
   def update?
@@ -18,7 +18,7 @@ class ChecklistPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return true if @user.present?
+    @user.present?
   end
 
   class Scope < Scope
