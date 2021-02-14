@@ -12,7 +12,7 @@
           = cl.description
         .col-2.text-center
           = link_to t('.destroy'), checklist_path(cl), method: :delete,class: "btn btn-danger mb-1", data: { confirm: t('.confirm') }
-          = link_to t("Publish"), checklist_path(cl), class: "btn btn-success"
+          
 .row
   .col.d-flex.justify-content-center.mt-3
     -if @checklists.length >= Checklist::COUNT_ITEM_PAGY
