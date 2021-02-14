@@ -3,7 +3,7 @@ class AuditsController < ApplicationController
   def index
     authorize Audit
     @pagy, @audits = pagy(policy_scope(Audit), items: Checklist::COUNT_ITEM_PAGY)
-   
+    
   end
 
   def new

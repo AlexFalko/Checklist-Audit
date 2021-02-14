@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_184614) do
+ActiveRecord::Schema.define(version: 2021_02_13_170730) do
 
   create_table "audits", force: :cascade do |t|
     t.integer "checklist_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_184614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "status", default: true
     t.index ["user_id"], name: "index_checklists_on_user_id"
   end
 

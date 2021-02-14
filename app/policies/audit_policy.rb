@@ -9,7 +9,7 @@ class AuditPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user == article.user
+    user.present?
   end
 
   def destroy?
