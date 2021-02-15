@@ -27,10 +27,13 @@ en:
     new:
       add: 'Add question +'
       cancel: 'Cancel'
+    toggle_status:
+      status_changed: 'Status changed'
+      status_not_changed: 'Status not changed'
   layouts:
     navigation:
       exit: 'Exit'
       sign_in: 'Sign in'
       sign_up: 'Sign up'
-      project_name: 'fffffff'
+
 

@@ -42,9 +42,9 @@ class ChecklistsController < ApplicationController
   def toggle_status
     checklist = Checklist.find(params[:id])
     if checklist.toggle!(:status)
-      redirect_to root_path, flash: { notice: "Status changed" }
+      redirect_to root_path, flash: { notice: t('.status_changed') }
     else
-      render root_path, flash: { alert: "Status not changed" }
+      render root_path, flash: { alert: t('.status_not_changed') }
     end 
   end
 
