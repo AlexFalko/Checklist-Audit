@@ -10,7 +10,7 @@
           %span{"aria-hidden" => "true"} ×
       .modal-body
         = form_for(Audit.new, url: new_audit_path, method: :get) do |form|
-          = form.collection_select :checklist_id, current_user.checklists.order(:title), :id, :title
+          = form.collection_select :checklist_id, current_user.checklists.where(status: true), :id, :title
           = form.submit
         
 %ul.list-group      

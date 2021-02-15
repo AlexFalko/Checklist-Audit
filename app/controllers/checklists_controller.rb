@@ -4,7 +4,6 @@ class ChecklistsController < ApplicationController
   def index
     authorize Checklist
     @pagy, @checklists = pagy(policy_scope(Checklist), items: Checklist::COUNT_ITEM_PAGY)
-   
   end
 
   def show
@@ -37,6 +36,15 @@ class ChecklistsController < ApplicationController
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
       render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
+    end 
+  end
+
+  def toggle_status
+    checklist = Checklist.find(params[:id])
+    if checklist.toggle!(:status)
+      redirect_to root_path, flash: { notice: "Status changed" }
+    else
+      render root_path, flash: { alert: "Status not changed" }
     end 
   end
 

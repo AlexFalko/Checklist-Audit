@@ -12,6 +12,10 @@
           = cl.description
         .col-2.text-center
           = link_to t('.destroy'), checklist_path(cl), method: :delete,class: "btn btn-danger mb-1", data: { confirm: t('.confirm') }
+          - if cl.status?
+            = link_to t("Unpablish"), toggle_status_checklist_path(cl), method: :patch, class: "btn btn-success"
+          - else
+            = link_to t("Pablish"), toggle_status_checklist_path(cl), method: :patch, class: "btn btn-success"
           
 .row
   .col.d-flex.justify-content-center.mt-3
