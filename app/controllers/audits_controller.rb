@@ -3,7 +3,6 @@ class AuditsController < ApplicationController
   def index
     authorize Audit
     @pagy, @audits = pagy(policy_scope(Audit), items: Checklist::COUNT_ITEM_PAGY)
-    
   end
 
   def new
@@ -24,7 +23,8 @@ class AuditsController < ApplicationController
   end
 
   def edit
-    @audit = Audit.find(params[:id])
+    @audit = policy_scope(Audit).find(params[:id])
+    authorize Audit
   end
 
   def update
@@ -47,12 +47,8 @@ class AuditsController < ApplicationController
     end 
   end   
 
-
 private
-
   def audit_params
     params.require(:audit).permit(:checklist_id, responses_attributes: [:id, :answer, :question_id, :description])
   end
-
-
 end

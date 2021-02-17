@@ -7,8 +7,8 @@ class ChecklistsController < ApplicationController
   end
 
   def show
-    authorize Checklist
-    @checklist = Checklist.find(params[:id])
+    @checklist = policy_scope(Checklist).find(params[:id])
+    authorize @checklist
   end
 
   def new  
@@ -31,7 +31,7 @@ class ChecklistsController < ApplicationController
 
   def destroy
     authorize Checklist
-    checklist = Checklist.find(params[:id])
+    checklist = policy_scope(Checklist).find(params[:id])
     if checklist.destroy
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
