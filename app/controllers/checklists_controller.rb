@@ -29,6 +29,23 @@ class ChecklistsController < ApplicationController
     end
   end
 
+  def edit
+    @checklist = policy_scope(Checklist).find(params[:id])
+    authorize Checklist
+  end
+
+  def update
+    authorize Checklist
+    @checklist = Checklist.find(params[:id])
+    
+    if @checklist.update(checklist_params)
+      redirect_to checklists_path, flash: { notice: "Checklist upadate" }
+    else
+      render 'edit', flash: { alert: "Checklist not update" }
+    end 
+
+  end
+
   def destroy
     authorize Checklist
     checklist = policy_scope(Checklist).find(params[:id])

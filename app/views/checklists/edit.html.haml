@@ -1,0 +1,32 @@
+%h1 New Checklist
+= form_with model: @checklist, local: true do |form|
+  %div
+    = form.label :title
+    %br/
+    = form.text_field :title, class: "form-control"
+    - @checklist.errors.full_messages_for(:title).each do |message|
+      %div= message
+  %div
+    =  form.label :description
+    %br/
+    = form.text_area :description, class: "form-control"
+    %br/
+    - @checklist.errors.full_messages_for(:description).each do |message|
+      %div= message
+  %div
+  %ul
+    %h3 Questions
+    = form.fields_for(:questions) do |questions_form|
+      #fieldsetContainer
+        %fieldset#0
+          = questions_form.label :title
+          = questions_form.text_field :title , class: "form-control"
+          - questions_form.object.errors.full_messages_for(:title).each do |message|
+            = message
+          = questions_form.label :description
+          = questions_form.text_field :description, class: "form-control"
+          - questions_form.object.errors.full_messages_for(:description).each do |message|
+            %div= message
+      
+  = form.submit :class => 'btn btn-success'
+  = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'

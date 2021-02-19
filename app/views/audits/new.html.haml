@@ -1,16 +1,18 @@
 Questions
 %ul.list-group
-= form_with(model: @audit, url: audits_path, method: :post) do |f|
-  = f.fields_for :responses do |ff|
-    %li.list-group-item
-      .row.align-items-center
-        .col.text-left
-          = "#{ff.object.question.title}: #{ff.object.question.description}"
-          = ff.select :answer, Response.answers.keys.to_a
-          = ff.text_field :description
-          = ff.hidden_field :question_id
-  = f.hidden_field(:checklist_id)
-  = f.submit
+= form_with(model: @audit, url: audits_path, method: :post) do |form|
+  = form.fields_for :responses do |response_form|
+    #fieldsetContainer
+      %fieldset#0
+        = "#{response_form.object.question.title}: #{response_form.object.question.description}"
+        = response_form.select :answer, Response.answers.keys.to_a
+        = response_form.text_field :description, class: "form-control"
+        - response_form.object.errors.full_messages_for(:description).each do |message|
+          = message.to_s
+        = response_form.hidden_field :question_id
+  = form.hidden_field(:checklist_id)
+  = form.submit
+
 
 = link_to t('.back'), :back, class: "btn btn-dark mt-2" 
 

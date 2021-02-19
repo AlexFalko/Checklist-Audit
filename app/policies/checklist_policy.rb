@@ -14,7 +14,7 @@ class ChecklistPolicy < ApplicationPolicy
   end
 
   def update?
-    # return true if user.present? && user == article.user
+    @user.present?
   end
 
   def destroy?

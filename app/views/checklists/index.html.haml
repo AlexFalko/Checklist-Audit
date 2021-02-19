@@ -12,6 +12,7 @@
           = cl.description
         .col-2.text-center
           = link_to t('.destroy'), checklist_path(cl), method: :delete,class: "btn btn-danger mb-1", data: { confirm: t('.confirm') }
+          = link_to t('.edit'), edit_checklist_path(cl), class:'btn btn-warning'
           - if cl.status?
             = link_to t("Unpablish"), toggle_status_checklist_path(cl), method: :patch, class: "btn btn-success"
           - else
