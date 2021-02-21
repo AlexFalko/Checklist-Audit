@@ -14,19 +14,17 @@
     - @checklist.errors.full_messages_for(:description).each do |message|
       %div= message
   %div
-  %ul
+  %ul#tag_id
     %h3 Questions
     = form.fields_for(:questions) do |questions_form|
-      #fieldsetContainer
-        %fieldset#0
-          = questions_form.label :title
-          = questions_form.text_field :title , class: "form-control"
-          - questions_form.object.errors.full_messages_for(:title).each do |message|
-            = message
-          = questions_form.label :description
-          = questions_form.text_field :description, class: "form-control"
-          - questions_form.object.errors.full_messages_for(:description).each do |message|
-            %div= message
-      
+      = questions_form.label :title
+      = questions_form.text_field :title , class: "form-control"
+      - questions_form.object.errors.full_messages_for(:title).each do |message|
+        = message
+      = questions_form.label :description
+      = questions_form.text_field :description, class: "form-control"
+      - questions_form.object.errors.full_messages_for(:description).each do |message|
+        %div= message
+  = link_to "Add question", "javascript:add_qustions()", class: 'btn btn-info' 
   = form.submit :class => 'btn btn-success'
   = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'

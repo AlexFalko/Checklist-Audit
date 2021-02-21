@@ -14,8 +14,6 @@ class ChecklistsController < ApplicationController
   def new  
     authorize Checklist
     @checklist = Checklist.new
-    @checklist.questions.build 
-    @checklist.questions.build 
   end
 
   def create
