@@ -1,14 +1,20 @@
-Questions
-%ul.list-group
-- @checklist.questions.each do |cc|
-  %li.list-group-item
-    .row.align-items-center
-      .col.text-center
-        = "title"
-        = cc.title
-      .col.text-center
-        = "description"
-        = cc.description
-= link_to t('.back'), :back, class: 'btn btn-danger'        
+%h4 Questions
+%table.highlight
+  %thead
+    %tr
+      %th Title
+      %th Description
+  %tbody
+    - @checklist.questions.each do |question|
+      %tr
+        %td
+          = question.title
+        %td
+          = question.description
+= link_to t('.back'), :back, class: 'btn mt'
+ 
+      
+
+
 
 

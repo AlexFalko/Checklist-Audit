@@ -1,18 +1,53 @@
-Questions
-%ul.list-group
-= form_with(model: @audit, url: audits_path, method: :post) do |form|
+%h4 New audit
+.row
+  .col.s4.text-bold
+    Question title
+  .col.s3.text-bold
+    Question description
+  .col.s2.text-bold
+    Response
+  .col.s3.text-bold
+    Response description
+
+= form_with(model: @audit, url: audits_path, method: :post, local: true) do |form|
   = form.fields_for :responses do |response_form|
-    #fieldsetContainer
-      %fieldset#0
-        = "#{response_form.object.question.title}: #{response_form.object.question.description}"
+    .row
+      .col.s4.mt
+        = "#{response_form.object.question.title}:"
+      .col.s3.mt
+        = "#{response_form.object.question.description}"
+      .col.s2
         = response_form.select :answer, Response.answers.keys.to_a
+      .col.s3
         = response_form.text_field :description, class: "form-control"
         - response_form.object.errors.full_messages_for(:description).each do |message|
           = message.to_s
         = response_form.hidden_field :question_id
-  = form.hidden_field(:checklist_id)
-  = form.submit
+        = form.hidden_field(:checklist_id)
+  = link_to t('.back'), :back, class: "btn red mt-2" 
+  = form.submit :class => 'btn mt green row'
 
 
-= link_to t('.back'), :back, class: "btn btn-dark mt-2" 
-
+  
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Title
+-#       %th Response
+-#       %th Response description
+-#   %tbody
+-#     = form_with(model: @audit, url: audits_path, method: :post) do |form|
+-#       = form.fields_for :responses do |response_form|
+-#         %tr
+-#           %td
+-#             = "#{response_form.object.question.title}: #{response_form.object.question.description}"
+-#           %td 
+-#             = response_form.select :answer, Response.answers.keys.to_a
+-#           %td  
+-#             = response_form.text_field :description, class: "form-control"
+-#             - response_form.object.errors.full_messages_for(:description).each do |message|
+-#               = message.to_s
+-#             = response_form.hidden_field :question_id
+-#       = form.hidden_field(:checklist_id)
+-#       = link_to t('.back'), :back, class: "btn red mt-2" 
+-#       = form.submit :class => 'btn mt green'

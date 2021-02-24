@@ -10,18 +10,51 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
+
+
+//= require jquery
+//= require jquery_ujs
 //= require rails-ujs
+//= require materialize
 //= require activestorage
-//= require turbolinks
+
+//= require_tree .
+
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+$(document).ready(function(){
+  $('.modal').modal();
+});
+
+$('.close').click(function() {
+  $('.alert').hide();
+})
+
+$(document).on('turbolinks:load', function() {
+  console.log('(document).turbolinks:load')
+});
+
+
+$(document).on('turbolinks:load', function() {
+  $('.dropdown-trigger').dropdown();
+});
+
+
+$(document).ready(function() {
+  M.updateTextFields();
+});
+
+
 
 function add_qustions() {
 
-  var ul = document.querySelectorAll('ul')[0];
+  var ul = document.querySelector(".ul_flag");
   var fieldsetContainer = document.createElement('div');
-  var id = document.getElementById('tag_id').childElementCount;
+  let id = document.getElementById('tag_id').childElementCount;
 
-  fieldsetContainer.innerHTML = "<fieldset id=" + id + "><label for='checklist_questions_attributes_" + id + "_title'>Title</label><input class='form-control' type='text' name='checklist[questions_attributes][" + id + "][title]' id='checklist_questions_attributes_" + id + "_title'><label for='checklist_questions_attributes_" + id + "_description'>Description</label><input class='form-control' type='text' name='checklist[questions_attributes][" + id + "][description]' id='checklist_questions_attributes_" + id + "_description'></fieldset>";
+  fieldsetContainer.innerHTML = "<fieldset id=" + id + "><div class='input-field'><label for='checklist_questions_attributes_" + id + "_title'>Question title</label><input class='form-control' type='text' name='checklist[questions_attributes][" + id + "][title]' id='checklist_questions_attributes_" + id + "_title'><div class='input-field'><label for='checklist_questions_attributes_" + id + "_description'>Question description</label><input class='form-control' type='text' name='checklist[questions_attributes][" + id + "][description]' id='checklist_questions_attributes_" + id + "_description'></fieldset>";
 
   fieldsetContainer.setAttribute('id', 'fieldsetContainer');
   ul.appendChild(fieldsetContainer);

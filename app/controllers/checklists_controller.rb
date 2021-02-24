@@ -14,6 +14,8 @@ class ChecklistsController < ApplicationController
   def new  
     authorize Checklist
     @checklist = Checklist.new
+    # @checklist.questions.build
+    # @checklist.questions.build
   end
 
   def create
@@ -30,6 +32,8 @@ class ChecklistsController < ApplicationController
   def edit
     @checklist = policy_scope(Checklist).find(params[:id])
     authorize Checklist
+    
+    return redirect_to checklists_path, flash: { notice: "The checklist has an audit!" } if @checklist.audits.any?
   end
 
   def update
@@ -37,7 +41,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.find(params[:id])
     
     if @checklist.update(checklist_params)
-      redirect_to checklists_path, flash: { notice: "Checklist upadate" }
+      redirect_to checklists_path, flash: { notice: "Checklist update" }
     else
       render 'edit', flash: { alert: "Checklist not update" }
     end 

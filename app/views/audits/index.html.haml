@@ -1,37 +1,33 @@
-.m-3.d-flex.justify-content-center
-  %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", type: "button"} Select checklist
-    
-#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-dialog{role: "document"}
-    .modal-content
-      .modal-header
-        %h5#exampleModalLabel.modal-title Select checklist
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
-          %span{"aria-hidden" => "true"} ×
-      .modal-body
-        = form_for(Audit.new, url: new_audit_path, method: :get) do |form|
-          = form.collection_select :checklist_id, current_user.checklists.where(status: true), :id, :title
-          = form.submit
-        
-%ul.list-group      
-  .container
-  - @audits.each do |audit|
-    %li.list-group-item
-      .row.align-items-center
-        .col-5.text-left
+%button.btn.blue.mt.modal-trigger{"data-target" => "modal1"} Select checklist
+#modal1.modal
+  .modal-content
+    %h5 Select a checklist to create an audit
+    = form_for(Audit.new, url: new_audit_path, method: :get) do |form|
+      = form.collection_select :checklist_id, current_user.checklists.where(status: true), :id, :title, { prompt: "Choose a checklist" }
+      = form.submit :class => 'btn mt'
+%h3 Audits
+%table.highlight
+  %thead
+    %tr
+      %th Checklist name
+      %th Update date
+      %th Action
+  %tbody
+    - @audits.each do |audit|
+      %tr
+        %td
           = audit.checklist.title
-        .col-4.text-left
+        %td
           = audit.checklist.updated_at
-        .col-3.text-right
-          = link_to t('.destroy'), audit_path(audit), method: :delete,class: "btn btn-danger", data: { confirm: t('.confirm') }
-          = link_to t('.edit'), edit_audit_path(audit), class:'btn btn-warning'
-
-
-= link_to t('.back'), checklists_path, class: "btn btn-dark mt-2"  
-.row
-  .col.d-flex.justify-content-center.mt-3
+        %td 
+          = link_to t('.destroy'), audit_path(audit), method: :delete,class: "btn red", data: { confirm: t('.confirm') }
+          = link_to t('.edit'), edit_audit_path(audit), class:'btn orange'
+      
+= link_to t('.back'), checklists_path, class: "btn mt"  
+.row.d-table
+  .col
     -if @audits.length >= Checklist::COUNT_ITEM_PAGY
-      = pagy_bootstrap_nav(@pagy).html_safe
+      = pagy_materialize_nav(@pagy).html_safe
       
 
 

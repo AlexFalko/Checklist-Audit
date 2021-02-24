@@ -1,21 +1,44 @@
-%ul.list-group
-= form_with(model: @audit, url: audit_path, method: :patch) do |f|
+-# %h4 Edit audit
+
+-# = form_with(model: @audit, url: audit_path, method: :patch) do |f|
+-#   = f.fields_for :responses do |ff|
+-#     = "#{ff.object.question.title}: #{ff.object.question.description}"
+-#     = ff.select :answer, Response.answers.keys.to_a
+-#     = ff.text_field :description
+-#     - ff.object.errors.full_messages_for(:description).each do |message|
+-#       %div= message
+-#     = ff.hidden_field :question_id
+-#   = f.hidden_field(:checklist_id)
+-#   = f.submit
+
+-# = link_to t('.back'), :back, class: "btn mt-2" 
+
+.row
+  .col.s3.text-bold
+    Question title
+  .col.s3.text-bold
+    Question description
+  .col.s3.text-bold
+    Response
+  .col.s3.text-bold
+    Response description
+= form_with(model: @audit, url: audit_path, method: :patch, local: true) do |f|
   = f.fields_for :responses do |ff|
-    %li.list-group-item
-      .row.align-items-center
-        .col.text-left
-          = "#{ff.object.question.title}: #{ff.object.question.description}"
-          = ff.select :answer, Response.answers.keys.to_a
-          = ff.text_field :description
-          - ff.object.errors.full_messages_for(:description).each do |message|
-            %div= message
-          = ff.hidden_field :question_id
-  = f.hidden_field(:checklist_id)
-  = f.submit
+    .row
+      .col.s3.mt
+        = "#{ff.object.question.title}" 
+      .col.s3.mt
+        = "#{ff.object.question.description}"
+      .col.s3
+        = ff.select :answer, Response.answers.keys.to_a
+      .col.s3
+        = ff.text_field :description
+      - ff.object.errors.full_messages_for(:description).each do |message|
+        %div= message
+      = ff.hidden_field :question_id
+      = f.hidden_field(:checklist_id)
+  = link_to t('.back'), :back, class: "btn red mr"   
+  = f.submit :class => "btn green"
+    
 
-= link_to t('.back'), :back, class: "btn btn-dark mt-2" 
-
-
-
-
-  
+    

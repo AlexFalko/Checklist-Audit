@@ -1,24 +1,31 @@
-.container.m-3.d-flex.justify-content-center
-  = link_to t('.new'), new_checklist_path, class:'btn btn-primary mr-4'
-  = link_to t('.show'), audits_path, class:'btn btn-success'
-
-%ul.list-group
-  - @checklists.each do |cl|
-    %li.list-group-item
-      .row.align-items-center
-        .col-3.text-left
+= link_to t('.new'), new_checklist_path, class:'btn mt green'
+= link_to t('.show'), audits_path, class:'btn mt blue'
+%table.highlight
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Actions
+  %tbody
+    - @checklists.each do |cl|
+      %tr
+        %td
           = link_to cl.title, cl
-        .col-7
+        %td 
           = cl.description
-        .col-2.text-center
-          = link_to t('.destroy'), checklist_path(cl), method: :delete,class: "btn btn-danger mb-1", data: { confirm: t('.confirm') }
-          = link_to t('.edit'), edit_checklist_path(cl), class:'btn btn-warning'
+        %td   
           - if cl.status?
-            = link_to t("Unpablish"), toggle_status_checklist_path(cl), method: :patch, class: "btn btn-success"
+            = link_to t("Unpublish"), toggle_status_checklist_path(cl), method: :patch, class: "btn"
           - else
-            = link_to t("Pablish"), toggle_status_checklist_path(cl), method: :patch, class: "btn btn-success"
-          
+            = link_to t("Publish"), toggle_status_checklist_path(cl), method: :patch,class: "btn"
+          = link_to t(".edit"), edit_checklist_path(cl), class: "btn orange"
+          = link_to t('.destroy'), checklist_path(cl), method: :delete, data: { confirm: t('.confirm') }, class: "btn red"
+         
+   
+
+    
 .row
-  .col.d-flex.justify-content-center.mt-3
+  .col.center-align.d-content
     -if @checklists.length >= Checklist::COUNT_ITEM_PAGY
-      = pagy_bootstrap_nav(@pagy).html_safe
+      = pagy_materialize_nav(@pagy).html_safe
+

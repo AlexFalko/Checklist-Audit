@@ -14,39 +14,131 @@
  *= require_self
 
  */
+@import "materialize/components/color-variables";
+$primary-color: color("teal", "lighten-2") !default;
+$secondary-color: color("teal", "base") !default;
+@import 'materialize';
+@import  "https://fonts.googleapis.com/icon?family=Material+Icons" ;
+
 
 
  
 
 
- .wc{
-  width: 30% !important
-}
+//  .wc{
+//   width: 30% !important
+// }
 
-body{
-  background: linear-gradient(to top, #258a4b, #e3ebe3);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
+// body{
+//   background: linear-gradient(to top, #ffffff, #ffffff);
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   background-attachment: fixed;
+//   background-size: cover;
   
+//  }
+ a {
+   text-decoration: none !important;
  }
 
- .custom-class{
-  font-weight: 800;
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-  padding: .5em 1em ;
-  border-radius: 5px;
-  border-color:rgb(64,199,129);
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
-  transition: 0.2s;
+ .mt{
+   margin-top: 20px !important;
+   margin-bottom: 20px !important;
+ }
+
+ .btn-floating.btn-large i {
+  line-height: 40px;
 }
 
-@media (min-width: 1200px){
-.container, .container-lg, .container-md, .container-sm, .container-xl {
-    max-width: 800;
+.btn-floating.btn-large {
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
+
+ .footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+
+ a:hover{
+   color: rgb(231, 225, 225);
+ }
+
+//  .custom-class{
+//   font-weight: 800;
+//   font-size: 20px;
+//   color: white;
+//   text-decoration: none;
+//   padding: .5em 1em ;
+//   border-radius: 5px;
+//   border-color:rgb(64,199,129);
+//   background: rgb(64,199,129);
+//   box-shadow: 0 -3px rgb(53,167,110) inset;
+//   transition: 0.2s;
+// }
+
+// @media (min-width: 1200px){
+// .container, .container-lg, .container-md, .container-sm, .container-xl {
+//     max-width: 800;
+// }
+// }
+
+.width_field{
+  width: max-content;
+  margin: auto;
+  margin-top: 130px;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+
+
+.mr{
+  margin-right: 10px;
+
+}
+.width_field_left{
+  width: max-content;
+  
+}
+.page-footer{
+  margin-top: 150px;
+}
+.d-content{
+  display: contents;
+}
+.d-table{
+  display: table;
+}
+
+fieldset{
+  border: none !important;
+}
+
+.field_center{
+  
+
+  display: contents;
+}
+
+.msg {
+  width:100%;
+  border: 1px solid;
+  padding:10px;
+  margin: 20px;
+  color: grey;
+  border-radius: 5px;
+}
+
+
+.msg-info{
+  border-color: #0288d1;
+  background-color: #29b6f6;
+  color: white;
 }

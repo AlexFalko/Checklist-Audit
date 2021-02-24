@@ -6,7 +6,8 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 gem 'sqlite3', group: :development
 gem 'devise'
-
+gem 'jquery-rails'
+gem 'materialize-sass', '~> 1.0.0'
 gem 'pagy'
 gem 'pundit'
 gem 'pry'
@@ -19,7 +20,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 

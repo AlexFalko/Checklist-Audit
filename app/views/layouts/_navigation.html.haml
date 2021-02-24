@@ -1,12 +1,14 @@
-.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-between
-  %div
-    %a.navbar-brand{:href => "#"} Sigma
-  %div
-    .navbar-nav
+%nav.teal
+  .container
+    %a.brand-logo{href: "#"} Sigma
+    %ul#nav-mobile.right.hide-on-med-and-down
       - if user_signed_in?
-        %span.nav-item.nav-link
+        %li
           Hello, #{current_user.email}
-        = link_to t('.exit'), destroy_user_session_path, method: :delete, class: "nav-item nav-link text-dark"
+        %li
+          = link_to t('.exit'), destroy_user_session_path, method: :delete
       - else
-        = link_to t('.sign_in'), new_user_session_path, class: "nav-item nav-link"
-        = link_to t('.sign_up'), new_user_registration_path, class: "nav-item nav-link"
+        %li
+          = link_to t('.sign_in'), new_user_session_path
+        %li
+          = link_to t('.sign_up'), new_user_registration_path

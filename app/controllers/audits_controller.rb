@@ -15,6 +15,7 @@ class AuditsController < ApplicationController
   def create
     authorize Audit
     @audit = current_user.audits.new(audit_params)
+    
     if @audit.save
       redirect_to audits_path, flash: { notice: t('.audit_create') }
     else
