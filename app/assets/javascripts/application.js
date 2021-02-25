@@ -1,23 +1,15 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 
-
-//= require jquery
 //= require rails-ujs
+//= require jquery
 //= require materialize
 //= require activestorage
 
 //= require_tree .
+
+
+$(document).on('ready page:load', function() {
+  $('.dropdown-trigger').dropdown();
+});
 
 $(document).ready(function(){
   $('select').formSelect();
@@ -31,21 +23,9 @@ $('.close').click(function() {
   $('.alert').hide();
 })
 
-$(document).on('turbolinks:load', function() {
-  console.log('(document).turbolinks:load')
-});
-
-
-$(document).on('turbolinks:load', function() {
-  $('.dropdown-trigger').dropdown();
-});
-
-
 $(document).ready(function() {
   M.updateTextFields();
 });
-
-
 
 function add_qustions() {
 

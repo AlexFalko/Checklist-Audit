@@ -1,5 +1,4 @@
 class AuditPolicy < ApplicationPolicy
-
   def index?
     @user.present?
   end
@@ -21,5 +20,4 @@ class AuditPolicy < ApplicationPolicy
       scope.where(user: user)
     end
   end
-   
 end

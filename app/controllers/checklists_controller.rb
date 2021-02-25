@@ -11,17 +11,15 @@ class ChecklistsController < ApplicationController
     authorize @checklist
   end
 
-  def new  
+  def new
     authorize Checklist
     @checklist = Checklist.new
-    # @checklist.questions.build
-    # @checklist.questions.build
   end
 
   def create
     authorize Checklist
     @checklist = current_user.checklists.new(checklist_params)
-    
+
     if @checklist.save
       redirect_to checklists_path, flash: { notice: t('.checklist_create') }
     else
@@ -32,20 +30,19 @@ class ChecklistsController < ApplicationController
   def edit
     @checklist = policy_scope(Checklist).find(params[:id])
     authorize Checklist
-    
-    return redirect_to checklists_path, flash: { notice: "The checklist has an audit!" } if @checklist.audits.any?
+
+    return redirect_to checklists_path, flash: { notice: 'The checklist has an audit!' } if @checklist.audits.any?
   end
 
   def update
     authorize Checklist
     @checklist = Checklist.find(params[:id])
-    
-    if @checklist.update(checklist_params)
-      redirect_to checklists_path, flash: { notice: "Checklist update" }
-    else
-      render 'edit', flash: { alert: "Checklist not update" }
-    end 
 
+    if @checklist.update(checklist_params)
+      redirect_to checklists_path, flash: { notice: 'Checklist update' }
+    else
+      render 'edit', flash: { alert: 'Checklist not update' }
+    end
   end
 
   def destroy
@@ -55,7 +52,7 @@ class ChecklistsController < ApplicationController
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
       render action: 'checklist#index', flash: { alert: t('.checklist_not_deleted') }
-    end 
+    end
   end
 
   def toggle_status
@@ -64,13 +61,13 @@ class ChecklistsController < ApplicationController
       redirect_to root_path, flash: { notice: t('.status_changed') }
     else
       render root_path, flash: { alert: t('.status_not_changed') }
-    end 
+    end
   end
 
   private
 
-    def checklist_params
-      params.require(:checklist).permit(:title, :description, :user_id, :status, questions_attributes: [:id, :title, :description])
-    end
-
+  def checklist_params
+    params.require(:checklist).permit(:title, :description, :user_id, :status,
+                                      questions_attributes: %i[id title description])
+  end
 end

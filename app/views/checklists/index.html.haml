@@ -13,12 +13,14 @@
           = link_to cl.title, cl
         %td 
           = cl.description
-        %td   
+        %td
           - if cl.status?
-            = link_to t("Unpublish"), toggle_status_checklist_path(cl), method: :patch, class: "btn"
+            = link_to t("Unpublish"), toggle_status_checklist_path(cl), method: :patch, class: "btn text"
           - else
-            = link_to t("Publish"), toggle_status_checklist_path(cl), method: :patch,class: "btn"
+            = link_to t("Publish"), toggle_status_checklist_path(cl), method: :patch,class: "btn button_m"
+        %td   
           = link_to t(".edit"), edit_checklist_path(cl), class: "btn orange"
+        %td  
           = link_to t('.destroy'), checklist_path(cl), method: :delete, data: { confirm: t('.confirm') }, class: "btn red"
 .row
   .col.center-align.d-content

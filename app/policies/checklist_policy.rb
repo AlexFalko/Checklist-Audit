@@ -1,6 +1,4 @@
 class ChecklistPolicy < ApplicationPolicy
-
-  
   def index?
     @user.present?
   end
@@ -26,5 +24,4 @@ class ChecklistPolicy < ApplicationPolicy
       scope.where(user: user)
     end
   end
-   
 end
