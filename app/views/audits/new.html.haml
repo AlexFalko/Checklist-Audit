@@ -22,8 +22,8 @@
         = response_form.text_field :description, class: "form-control"
         - response_form.object.errors.full_messages_for(:description).each do |message|
           = message.to_s
-        = response_form.hidden_field :question_id
-        = form.hidden_field(:checklist_id)
+      = response_form.hidden_field :question_id
+  = form.hidden_field(:checklist_id)
   = link_to t('.back'), :back, class: "btn red mt-2" 
   = form.submit :class => 'btn mt green row'
 
