@@ -1,13 +1,14 @@
-%h4 New audit
+%h4
+  = t('.new_audit')
 .row
   .col.s4.text-bold
-    Question title
+    = t('.question_title')
   .col.s3.text-bold
-    Question description
+    = t('.question_description')
   .col.s2.text-bold
-    Response
+    = t('.response')
   .col.s3.text-bold
-    Response description
+    = t('.response_description')
 
 = form_with(model: @audit, url: audits_path, method: :post, local: true) do |form|
   = form.fields_for :responses do |response_form|

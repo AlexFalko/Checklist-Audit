@@ -1,13 +1,14 @@
-%h4 Edit audit
+%h4 
+  = t('.question_title')
 .row
   .col.s3.text-bold
-    Question title
+    = t('.question_title')
   .col.s3.text-bold
-    Question description
+    = t('.question_description')
   .col.s3.text-bold
-    Response
+    = t('.response')
   .col.s3.text-bold
-    Response description
+    = t('.response_description')
 = form_with(model: @audit, url: audit_path, method: :patch, local: true) do |f|
   = f.fields_for :responses do |ff|
     .row

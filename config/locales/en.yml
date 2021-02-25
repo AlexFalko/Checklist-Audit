@@ -1,4 +1,4 @@
-en: 
+en:
   audits:
     destroy:
       audit_deleted: 'Audit removed!'
@@ -10,9 +10,25 @@ en:
       confirm: 'Are you sure?'
       edit: 'Edit'
       back: 'Back'
+      modal_info: 'Select a checklist to create an audit'
+      choose_a_checklist: 'Choose a checklist'
+      checklist_name: 'Checklist name'
+      update_date: 'Update date'
+      action: 'Action'
+      audits: 'Audits'
+    new:
+      question_title: 'Question title'
+      question_description: 'Question description'
+      response: 'Response'
+      response_description: 'Response description'
     update:
       audit_edit: 'Audit changed!'
       audit_not_edit: 'Audit not changed!'
+    edit:
+      question_title: 'Question title'
+      question_description: 'Question description'
+      response: 'Response'
+      response_description: 'Response description'
   checklists:
     create:
       checklist_create: 'Checkist created!'
@@ -30,6 +46,11 @@ en:
     toggle_status:
       status_changed: 'Status changed'
       status_not_changed: 'Status not changed'
+    edit:
+      error_edit: 'The checklist has an audit!'  
+    update:
+      checklist_update: 'Checklist update!'  
+      checklist_not_update: 'Checklist not update!'  
   layouts:
     navigation:
       exit: 'Exit'

@@ -1,17 +1,22 @@
 %button.btn.blue.mt.modal-trigger{"data-target" => "modal1"} Select checklist
 #modal1.modal
   .modal-content
-    %h5 Select a checklist to create an audit
+    %h5 
+      = t('.modal_info')
     = form_for(Audit.new, url: new_audit_path, method: :get) do |form|
-      = form.collection_select :checklist_id, current_user.checklists.where(status: true), :id, :title, { prompt: "Choose a checklist" }
+      = form.collection_select :checklist_id, current_user.checklists.where(status: true), :id, :title, { prompt: t('choose_a_checklist') }
       = form.submit :class => 'btn mt'
-%h3 Audits
+%h3
+  = t('.audits')
 %table.highlight
   %thead
     %tr
-      %th Checklist name
-      %th Update date
-      %th Action
+      %th 
+        = t('.checklist_name')
+      %th 
+        = t('.update_date')
+      %th 
+        = t('.action')
   %tbody
     - @audits.each do |audit|
       %tr
