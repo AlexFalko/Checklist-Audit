@@ -14,22 +14,24 @@
       %table
         %thead
           %tr
-            %th Question title
-            %th Question description
+            %th
+              = t('.question_title')
+            %th 
+              = t('.question_description')
         %tbody
           = form.fields_for(:questions) do |questions_form|
             %tr
               %td
-                = questions_form.label "Question title"
+                = questions_form.label t('.question_title')
                 = questions_form.text_field :title 
                 - questions_form.object.errors.full_messages_for(:title).each do |message|
                   %div= message
               %td 
-                = questions_form.label "Question description"
+                = questions_form.label t('.question_description')
                 = questions_form.text_field :description
                 - questions_form.object.errors.full_messages_for(:description).each do |message|
                   %div= message          
     = link_to t('.cancel'), checklists_path, class: 'btn red'  
-    = link_to "Add question", "javascript:add_qustions()", class: 'btn blue' 
+    = link_to t('.add_question'), "javascript:add_qustions()", class: 'btn blue' 
     = form.submit :class => 'btn green'
     

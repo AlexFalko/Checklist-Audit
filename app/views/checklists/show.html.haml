@@ -2,8 +2,10 @@
 %table.highlight
   %thead
     %tr
-      %th Title
-      %th Description
+      %th 
+        = t('.title')
+      %th 
+        = t('.description')
   %tbody
     - @checklist.questions.each do |question|
       %tr

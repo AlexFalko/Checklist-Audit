@@ -40,14 +40,24 @@ en:
       show: 'Show audits'
       destroy: 'Delete'
       confirm: 'Delete the checklist and all audits associated with it?'
+      unpublish: 'Unpublish'
+      publish: 'Publish'
     new:
       add: 'Add question +'
       cancel: 'Cancel'
+      question_title: 'Question title'
+      question_description: 'Question description' 
     toggle_status:
       status_changed: 'Status changed'
       status_not_changed: 'Status not changed'
     edit:
-      error_edit: 'The checklist has an audit!'  
+      error_edit: 'The checklist has an audit!' 
+      question_title: 'Question title'
+      question_description: 'Question description' 
+      add_question: 'Add question'
+    show:
+      title: 'Title'
+      description: 'Description'
     update:
       checklist_update: 'Checklist update!'  
       checklist_not_update: 'Checklist not update!'  

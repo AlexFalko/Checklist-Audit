@@ -13,16 +13,16 @@
         %div= message
     %ul.ul_flag#tag_id
       = form.fields_for(:questions) do |questions_form|
-        = questions_form.label :title, "Question title"
+        = questions_form.label :title, t('.question_title')
         = questions_form.text_field :title 
         - questions_form.object.errors.full_messages_for(:title).each do |message|
           %div= message
-        = questions_form.label :description, "Question description"
+        = questions_form.label :description, t('.question_description')
         = questions_form.text_field :description
         - questions_form.object.errors.full_messages_for(:description).each do |message|
           %div= message
           
     = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'  
-    = link_to "Add question", "javascript:add_qustions()", class: 'btn' 
+    = link_to t('.add'), "javascript:add_qustions()", class: 'btn' 
     = form.submit :class => 'btn btn-success'
     
