@@ -27,27 +27,3 @@
   = link_to t('.back'), :back, class: "btn red mt-2" 
   = form.submit :class => 'btn mt green row'
 
-
-  
--# %table
--#   %thead
--#     %tr
--#       %th Title
--#       %th Response
--#       %th Response description
--#   %tbody
--#     = form_with(model: @audit, url: audits_path, method: :post) do |form|
--#       = form.fields_for :responses do |response_form|
--#         %tr
--#           %td
--#             = "#{response_form.object.question.title}: #{response_form.object.question.description}"
--#           %td 
--#             = response_form.select :answer, Response.answers.keys.to_a
--#           %td  
--#             = response_form.text_field :description, class: "form-control"
--#             - response_form.object.errors.full_messages_for(:description).each do |message|
--#               = message.to_s
--#             = response_form.hidden_field :question_id
--#       = form.hidden_field(:checklist_id)
--#       = link_to t('.back'), :back, class: "btn red mt-2" 
--#       = form.submit :class => 'btn mt green'

@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  MIN_LENGTH_TITLE = 3
+  MIN_LENGTH_TITLE = 12
   MAX_LENGTH_TITLE = 40
 
   validates :title, :description, presence: true

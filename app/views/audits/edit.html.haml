@@ -1,18 +1,4 @@
--# %h4 Edit audit
-
--# = form_with(model: @audit, url: audit_path, method: :patch) do |f|
--#   = f.fields_for :responses do |ff|
--#     = "#{ff.object.question.title}: #{ff.object.question.description}"
--#     = ff.select :answer, Response.answers.keys.to_a
--#     = ff.text_field :description
--#     - ff.object.errors.full_messages_for(:description).each do |message|
--#       %div= message
--#     = ff.hidden_field :question_id
--#   = f.hidden_field(:checklist_id)
--#   = f.submit
-
--# = link_to t('.back'), :back, class: "btn mt-2" 
-
+%h4 Edit audit
 .row
   .col.s3.text-bold
     Question title
@@ -33,8 +19,8 @@
         = ff.select :answer, Response.answers.keys.to_a
       .col.s3
         = ff.text_field :description
-      - ff.object.errors.full_messages_for(:description).each do |message|
-        %div= message
+        - ff.object.errors.full_messages_for(:description).each do |message|
+          = message
       = ff.hidden_field :question_id
       = f.hidden_field(:checklist_id)
   = link_to t('.back'), :back, class: "btn red mr"   
