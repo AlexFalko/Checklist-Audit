@@ -36,6 +36,9 @@ en:
       checklist_deleted: 'Checklist removed!'
       checklist_not_deleted: 'Checklist not deleted!'
     index:
+      title: 'Title'
+      description: 'Description'
+      actions: 'Actions'
       new: 'New checklist'
       show: 'Show audits'
       destroy: 'Delete'
@@ -56,6 +59,7 @@ en:
       question_description: 'Question description' 
       add_question: 'Add question'
     show:
+      questions: 'Questions'
       title: 'Title'
       description: 'Description'
     update:
@@ -66,5 +70,7 @@ en:
       exit: 'Exit'
       sign_in: 'Sign in'
       sign_up: 'Sign up'
+      title_site: 'Sigma'
+      welcome: 'Hello,'
 
 

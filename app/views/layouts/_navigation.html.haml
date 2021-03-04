@@ -1,10 +1,12 @@
 %nav.teal
   .container
-    %a.brand-logo{href: "#"} Sigma
+    %a.brand-logo{href: "#"} 
+      = t('.title_site')
     %ul#nav-mobile.right.hide-on-med-and-down
       - if user_signed_in?
         %li
-          Hello, #{current_user.email}
+          = t('.welcome') 
+          #{current_user.email}
         %li
           = link_to t('.exit'), destroy_user_session_path, method: :delete
       - else

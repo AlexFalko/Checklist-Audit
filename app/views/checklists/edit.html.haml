@@ -6,7 +6,7 @@
     = form.text_field :title
     - @checklist.errors.full_messages_for(:title).each do |message|
       %div= message
-    =  form.label :description
+    = form.label :description
     = form.text_field :description
     - @checklist.errors.full_messages_for(:description).each do |message|
       %div= message
@@ -19,17 +19,17 @@
             %th 
               = t('.question_description')
         %tbody
-          = form.fields_for(:questions) do |questions_form|
+          = form.fields_for(:questions) do |question|
             %tr
               %td
-                = questions_form.label t('.question_title')
-                = questions_form.text_field :title 
-                - questions_form.object.errors.full_messages_for(:title).each do |message|
+                = question.label t('.question_title')
+                = question.text_field :title 
+                - question.object.errors.full_messages_for(:title).each do |message|
                   %div= message
               %td 
-                = questions_form.label t('.question_description')
-                = questions_form.text_field :description
-                - questions_form.object.errors.full_messages_for(:description).each do |message|
+                = question.label t('.question_description')
+                = question.text_field :description
+                - question.object.errors.full_messages_for(:description).each do |message|
                   %div= message          
     = link_to t('.cancel'), checklists_path, class: 'btn red'  
     = link_to t('.add_question'), "javascript:add_qustions()", class: 'btn blue' 

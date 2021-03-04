@@ -3,27 +3,29 @@
 %table.highlight
   %thead
     %tr
-      %th Title
-      %th Description
-      %th Actions
+      %th 
+        = t('.title')
+      %th 
+        = t('.description')
+      %th 
+        = t('.actions')
   %tbody
-    - @checklists.each do |cl|
+    - @checklists.each do |checklist|
       %tr
         %td
-          = link_to cl.title, cl
-        %td 
-          = cl.description
+          = link_to checklist.title, checklist
         %td
-          - if cl.status?
-            = link_to t(".unpublish"), toggle_status_checklist_path(cl), method: :patch, class: "btn text"
+          = checklist.description
+        %td
+          - if checklist.status?
+            = link_to t(".unpublish"), toggle_status_checklist_path(checklist), method: :patch, class: "btn text"
           - else
-            = link_to t(".publish"), toggle_status_checklist_path(cl), method: :patch,class: "btn button_m"
-        %td   
-          = link_to t(".edit"), edit_checklist_path(cl), class: "btn orange"
-        %td  
-          = link_to t('.destroy'), checklist_path(cl), method: :delete, data: { confirm: t('.confirm') }, class: "btn red"
+            = link_to t(".publish"), toggle_status_checklist_path(checklist), method: :patch,class: "btn button_m"
+        %td
+          = link_to t(".edit"), edit_checklist_path(checklist), class: "btn orange"
+        %td
+          = link_to t('.destroy'), checklist_path(checklist), method: :delete, data: { confirm: t('.confirm') }, class: "btn red"
 .row
   .col.center-align.d-content
     -if @checklists.length >= Checklist::COUNT_ITEM_PAGY
       = pagy_materialize_nav(@pagy).html_safe
-

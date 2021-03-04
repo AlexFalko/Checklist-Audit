@@ -1,4 +1,5 @@
-%h4 New Checklist
+%h4 
+  = t('.new_checklist')
 .width_field_left
   = form_with model: @checklist, local: true do |form|
     .input-field
@@ -7,7 +8,7 @@
       - @checklist.errors.full_messages_for(:title).each do |message|
         %div= message
     .input-field
-      =  form.label :description
+      = form.label :description
       = form.text_field :description
       - @checklist.errors.full_messages_for(:description).each do |message|
         %div= message
