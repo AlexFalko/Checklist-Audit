@@ -5,15 +5,16 @@ default: &default
   timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: d5vig654lmrbiu
-  pool: 5
-  username: bdyfpddohhtsfe
-  password: 0351b0568a2b569c7b65b6d12cd9723787026faba4c2ffe68dcfab98b239158f
-  timeout: 5000
-  port: 5432
-  host: ec2-34-203-155-237.compute-1.amazonaws.com
+  adapter: Rails.application.credentials.database[:adapter]
+  encoding: Rails.application.credentials.database[:encoding]
+  database: Rails.application.credentials.database[:database]
+  pool: Rails.application.credentials.database[:pool]
+  username: Rails.application.credentials.database[:username]
+  password: Rails.application.credentials.database[:password]
+  timeout: Rails.application.credentials.database[:timeout]
+  port: Rails.application.credentials.database[:port]
+  host: Rails.application.credentials.database[:host]
+secret_key_base: Rails.application.credentials.secret_key_base
 
 development:
   <<: *default
