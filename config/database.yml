@@ -14,7 +14,6 @@ production:
   timeout: Rails.application.credentials.database[:timeout]
   port: Rails.application.credentials.database[:port]
   host: Rails.application.credentials.database[:host]
-secret_key_base: Rails.application.credentials.secret_key_base
 
 development:
   <<: *default
