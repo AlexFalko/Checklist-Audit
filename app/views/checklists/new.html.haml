@@ -22,8 +22,8 @@
         = questions_form.text_field :description
         - questions_form.object.errors.full_messages_for(:description).each do |message|
           %div= message
-          
-    = link_to t('.cancel'), checklists_path, class: 'btn btn-danger'  
-    = link_to t('.add'), "javascript:add_qustions()", class: 'btn' 
-    = form.submit :class => 'btn btn-success'
-    
+    = form.submit :class => 'btn green'
+    = link_to t('.add'), "javascript:add_qustions()", class: 'btn blue'
+    = link_to t('.cancel'), checklists_path, class: 'btn red'
+
+
