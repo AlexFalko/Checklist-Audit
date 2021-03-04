@@ -8,10 +8,5 @@
       %th 
         = t('.description')
   %tbody
-    - @checklist.questions.each do |question|
-      %tr
-        %td
-          = question.title
-        %td
-          = question.description
+    = render "partials/showquestions"
 = link_to t('.back'), :back, class: 'btn mt'

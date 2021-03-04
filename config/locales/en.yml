@@ -16,6 +16,7 @@ en:
       update_date: 'Update date'
       action: 'Action'
       audits: 'Audits'
+      select_checklist: SELECT CHECKLIST
     new:
       question_title: 'Question title'
       question_description: 'Question description'
