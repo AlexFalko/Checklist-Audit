@@ -7,7 +7,7 @@ class ChecklistsController < ApplicationController
   end
 
   def show
-    @checklist = policy_scope(Checklist).find(params[:id])
+    @checklist = policy_scope(Checklist).find_by(id: params[:id])
     authorize @checklist
   end
 
@@ -28,7 +28,7 @@ class ChecklistsController < ApplicationController
   end
 
   def edit
-    @checklist = policy_scope(Checklist).find(params[:id])
+    @checklist = policy_scope(Checklist).find_by(id: params[:id])
     authorize Checklist
 
     return redirect_to checklists_path, flash: { notice: t('.error_edit') } if @checklist.audits.any?
@@ -36,7 +36,7 @@ class ChecklistsController < ApplicationController
 
   def update
     authorize Checklist
-    @checklist = Checklist.find(params[:id])
+    @checklist = Checklist.find_by(id: params[:id])
 
     if @checklist.update(checklist_params)
       redirect_to checklists_path, flash: { notice: t('.checklist_update') }
@@ -47,7 +47,7 @@ class ChecklistsController < ApplicationController
 
   def destroy
     authorize Checklist
-    checklist = policy_scope(Checklist).find(params[:id])
+    checklist = policy_scope(Checklist).find_by(id: params[:id])
     if checklist.destroy
       redirect_to checklists_path, flash: { notice: t('.checklist_deleted') }
     else
@@ -56,7 +56,7 @@ class ChecklistsController < ApplicationController
   end
 
   def toggle_status
-    checklist = Checklist.find(params[:id])
+    checklist = policy_scope(Checklist).find_by(id: params[:id])
     if checklist.toggle!(:status)
       redirect_to root_path, flash: { notice: t('.status_changed') }
     else

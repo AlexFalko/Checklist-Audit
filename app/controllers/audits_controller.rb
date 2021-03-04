@@ -33,7 +33,7 @@ class AuditsController < ApplicationController
 
   def update
     authorize Audit
-    @audit = Audit.includes(responses: :question).find(params[:id])
+    @audit = Audit.includes(responses: :question).find_by(id: params[:id])
     if @audit.update(audit_params)
       redirect_to audits_path, flash: { notice: t('.audit_edit') }
     else
@@ -43,14 +43,14 @@ class AuditsController < ApplicationController
 
   def destroy
     authorize Audit
-    @audit = Audit.find(params[:id])
+    @audit = policy_scope(Audit).find_by(id: params[:id])
     if @audit.destroy
       redirect_to audits_path, flash: { notice: t('.audit_deleted') }
     else
       render action: 'audit#index', flash: { alert: t('.audit_not_deleted') }
     end
   end
-
+  
   private
 
   def audit_params
