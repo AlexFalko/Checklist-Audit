@@ -2,7 +2,9 @@ class AuditsController < ApplicationController
   before_action :authenticate_user!
   def index
     authorize Audit
-    @pagy, @audits = pagy(policy_scope(Audit), items: Checklist::COUNT_ITEM_PAGY)
+    @pagy, @audits = pagy(policy_scope(Audit).includes([:checklist]), items: Checklist::COUNT_ITEM_PAGY)
+
+    # scope.includes(:checklist, responses: :question).where(user: user)
   end
 
   def new
@@ -24,13 +26,14 @@ class AuditsController < ApplicationController
   end
 
   def edit
-    @audit = policy_scope(Audit).find(params[:id])
+    @audit = policy_scope(Audit).includes(responses: :question)
+                                .find(params[:id])
     authorize Audit
   end
 
   def update
     authorize Audit
-    @audit = Audit.find(params[:id])
+    @audit = Audit.includes(responses: :question).find(params[:id])
     if @audit.update(audit_params)
       redirect_to audits_path, flash: { notice: t('.audit_edit') }
     else

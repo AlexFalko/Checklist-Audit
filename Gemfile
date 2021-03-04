@@ -4,10 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bullet', group: 'development'  
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'draper'
 gem 'ffaker'
+gem 'xmpp4r'
 gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
