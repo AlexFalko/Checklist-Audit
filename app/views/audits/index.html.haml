@@ -32,7 +32,7 @@
 = link_to t('.back'), checklists_path, class: "btn mt"  
 .row.d-table
   .col
-    -if pagy_count?
+    -if pagy_count_audit?
       = pagy_materialize_nav(@pagy).html_safe
       
 
