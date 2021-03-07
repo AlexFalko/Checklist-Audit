@@ -27,5 +27,5 @@
           = link_to t('.destroy'), checklist_path(checklist), method: :delete, data: { confirm: t('.confirm') }, class: "btn red"
 .row
   .col.center-align.d-content
-    -if @checklists.length >= Checklist::COUNT_ITEM_PAGY
+    -if Checklist.count >= Checklist::COUNT_ITEM_PAGY
       = pagy_materialize_nav(@pagy).html_safe
